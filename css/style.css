@@ -1,0 +1,22 @@
+* {
+    font-family: 'Inter', sans-serif;
+}
+.icon-display {
+    visibility: visible !important;
+}
+#signin {
+    background: linear-gradient(to right, rgb(236, 75, 75), rgb(229, 56, 56));
+}
+@media (max-width: 993px) {
+    #join {
+        width: 25%;
+    }
+}
+@media (max-width: 425px) {
+    .sign-in-personnel img {
+        display: none;
+    }
+    .icon-display {
+        top: 8% !important;
+    }
+}
