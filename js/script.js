@@ -8,6 +8,7 @@ const signIn = document.getElementById("signin");
 const first = document.getElementById("first");
 const last = document.getElementById("last");
 const myEmail = document.getElementById("myemail");
+const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 togglePassword.addEventListener('click', function () {
     const type = password.getAttribute("type") === "password" ? "text" : "password";
@@ -37,7 +38,7 @@ function signinSuccess(e) {
     
     const passwordValue = document.getElementById("password").value;
 
-    if ((firstName.value && lastName.value && email.value && password.value) && (passwordValue.length >= 8)) {
+    if ((firstName.value && lastName.value && email.value.match(mailFormat) && password.value) && (passwordValue.length >= 8)) {
         window.location.href = 'test.html';
     } 
      
@@ -61,6 +62,9 @@ function signinSuccess(e) {
      
     if (!(email.value)) {
         emailInputError();
+    } else if (!(email.value.match(mailFormat))) {
+        const emailInfo = document.getElementById("email-info");
+        emailInfo.innerHTML = "This is not a valid email address";
     } else {
         email.style.borderColor = "#ced4da";
         const emailInfo = document.getElementById("email-info");
